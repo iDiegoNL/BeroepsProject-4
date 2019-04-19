@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home2');
+    }
+
+    public function pruneTestUsers()
+    {
+        User::where('name', 'like', 'test-' . '%')->delete();
+        return back();
+    }
+
+    public function dropUsers()
+    {
+        User::truncate();
+        return redirect(route('register'));
     }
 }

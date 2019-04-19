@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -46,12 +47,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-
-        $post->status = $request->status;
-        $post->user_id = Auth::id();
-
-        $post->save();
+        $user = User::find($request->userID);
+        $user->posts()->create([
+            'status' => $request->status,
+        ]);
 
         return back();
     }
