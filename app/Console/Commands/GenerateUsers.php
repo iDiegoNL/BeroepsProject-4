@@ -45,12 +45,12 @@ class GenerateUsers extends Command
         $bar = $this->output->createProgressBar($users);
         // Start the progress bar
         $bar->start();
-        // Basis while x loop
+        // Basic while x loop
         $x = 0;
         while ($x < $users) {
             // Create the user
             $user = User::create([
-                'name' => 'test-' . substr(md5(microtime()), rand(0, 26), 5),
+                'username' => 'test-' . substr(md5(microtime()), rand(0, 26), 5),
                 'email' => substr(md5(microtime()), rand(0, 26), 15) . '@gmail.com',
                 'password' => Hash::make('test123'),
             ]);

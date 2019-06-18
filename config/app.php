@@ -166,6 +166,9 @@ return [
          * Package Service Providers...
          */
         GetStream\StreamLaravel\StreamLaravelServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,6 +230,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'FeedManager' => GetStream\StreamLaravel\Facades\FeedManager::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

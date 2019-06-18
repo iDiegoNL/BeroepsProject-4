@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,27 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'display_name',
+        'username',
+        'first_name',
+        'last_name',
+        'address',
+        'country',
+        'phone_number',
+        'role',
+        'avatar',
+        'birthday',
+        'birthday',
+        'share_birthday',
+        'country',
+        'share_country',
+        'language',
+        'spotify_account',
+        'soundcloud_account',
+        'bio',
+        'fav_band',
+        'email',
+        'password',
     ];
 
     /**
@@ -43,13 +65,5 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\Post');
-    }
-
-    /**
-     * Get the users that the user follows.
-     */
-    public function follows()
-    {
-        return $this->hasMany('App\Follow');
     }
 }
